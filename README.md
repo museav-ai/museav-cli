@@ -126,9 +126,18 @@ reel make --assets ./图片目录 --caps 文案.txt --title "标题" --bgm 儿�
 [![Codex](https://img.shields.io/badge/Codex-compatible-10a37f?style=for-the-badge)](./AGENTS.md)
 [![Hermes](https://img.shields.io/badge/Hermes-compatible-f2a65a?style=for-the-badge)](./AGENTS.md)
 [![Antigravity](https://img.shields.io/badge/Antigravity-compatible-8b5cf6?style=for-the-badge)](./AGENTS.md)
+[![WorkBuddy](https://img.shields.io/badge/WorkBuddy-MCP-1f6feb?style=for-the-badge)](./docs/mcp-workbuddy.md)
 
 它天生适合被 Agent 代跑：没有向导菜单、没有 `y/N` 确认、stdout 只出可解析结果、
 凭证走环境变量不落盘。细节见 [AGENTS.md](./AGENTS.md)。
+
+WorkBuddy 可通过本机 MCP 直接复用当前 CLI 登录态：
+
+```bash
+museav mcp
+```
+
+安装配置见 [WorkBuddy MCP 接入指南](./docs/mcp-workbuddy.md)。
 
 ## 📦 从旧版迁移
 

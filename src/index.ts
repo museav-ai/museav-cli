@@ -36,10 +36,13 @@ import { stickers, createSticker } from './commands/stickers.js'
 import { posterTemplates, createPosterTemplate, updatePosterTemplate, removePosterTemplate } from './commands/poster-templates.js'
 import { registerShop } from './commands/shop.js'
 import { speak } from './commands/speak.js'
+import { startMcpServer } from './commands/mcp.js'
 
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf-8')) as { name: string; version: string }
 // 每 12 小时最多查一次 npm registry，过期才提示，不拖慢日常调用
-updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 * 12 }).notify({ defer: false })
+const isMcpServer = process.argv[2] === 'mcp'
+const isMcpProcess = isMcpServer || process.env.MUSEAV_MCP_CHILD === '1'
+if (!isMcpProcess) updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 * 12 }).notify({ defer: false })
 
 /**
  * 首次运行欢迎语：只在第一次执行时提示一次（用环境变量 XHS_ONCE 防止在同一会话里重复输出），
@@ -66,7 +69,7 @@ function maybeWelcome(): void {
     } catch { /* ignore */ }
   } catch { /* 欢迎语失败绝不阻塞任何命令 */ }
 }
-maybeWelcome()
+if (!isMcpProcess) maybeWelcome()
 
 const program = new Command()
 
@@ -703,5 +706,10 @@ program
     clearToken()
     process.stderr.write('✅ 已退出登录\n')
   })
+
+program
+  .command('mcp')
+  .description('启动本地 MCP Server，供 WorkBuddy 等 MCP 客户端调用现有 CLI 能力')
+  .action(asyncRun(() => startMcpServer(pkg.version)))
 
 program.parse()

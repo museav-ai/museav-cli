@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.17.0 (2026-11-20)
+## 3.17.0 (2026-11-24)
 
 ### 有了 `museav speak`：文字转语音，音频直接落到本地
 
@@ -44,6 +44,14 @@ museav speak "第三集开始，雨水顺着屋檐落下来" --voice male-qn-qin
 另外 `--speed` 现在只收 0.5–2.0 之间的数字，非法值（比如 `abc`）会在调用上游（可能计费）
 之前就报错，而不是变成 NaN 发给上游；找 ffmpeg 也改成先看 PATH，Windows 和 MacPorts 这类
 装法不再被误判成"没装"。
+
+### `museav mcp`：让 WorkBuddy 直接使用已登录的 MUSE AV
+
+以前把 MUSE AV 接进 WorkBuddy，需要另找连接器、重复配置能力，或者把账户凭证交给另一套服务。
+现在安装本 CLI 后运行 `museav mcp`，WorkBuddy 通过本机 MCP 调用同一套 `museav` 命令和登录态。
+
+当前提供额度、模型、技能、模板、任务查询，以及图片和视频生成。生成会扣当前 MUSE AV 账户额度；
+安装后可先在 WorkBuddy 里查询模型和额度，再发起生成。配置示例见 [MCP 接入指南](./docs/mcp-workbuddy.md)。
 
 
 ## 3.16.2 (2026-11-18)
