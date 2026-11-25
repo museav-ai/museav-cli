@@ -122,7 +122,7 @@ Typical chain: `museav gen` → `museav remove-bg` → `reel make`.
 [![Codex](https://img.shields.io/badge/Codex-compatible-10a37f?style=for-the-badge)](./AGENTS.md)
 [![Hermes](https://img.shields.io/badge/Hermes-compatible-f2a65a?style=for-the-badge)](./AGENTS.md)
 [![Antigravity](https://img.shields.io/badge/Antigravity-compatible-8b5cf6?style=for-the-badge)](./AGENTS.md)
-[![WorkBuddy](https://img.shields.io/badge/WorkBuddy-MCP-1f6feb?style=for-the-badge)](./docs/mcp-workbuddy.md)
+[![WorkBuddy](https://img.shields.io/badge/WorkBuddy-MCP-1f6feb?style=for-the-badge)](./docs/mcp-workbuddy.en.md)
 
 No wizard menus, no `y/N` prompts, only parseable output on stdout, credentials via environment variables.
 See [AGENTS.md](./AGENTS.md).
@@ -133,7 +133,7 @@ WorkBuddy can reuse the current CLI login through the local MCP server:
 museav mcp
 ```
 
-See the [WorkBuddy MCP setup guide](./docs/mcp-workbuddy.md).
+See the [WorkBuddy MCP setup guide](./docs/mcp-workbuddy.en.md).
 
 ## 📦 Migrating from the old package
 
